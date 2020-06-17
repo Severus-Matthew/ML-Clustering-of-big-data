@@ -1,0 +1,48 @@
+#Cluster For Multivariate Data
+#Importing Libraries
+
+import numpy as np
+import pandas as pd
+from sklearn.cluster import KMeans
+
+# Importing the dataset
+
+data = pd.read_csv('heart.csv')
+print("Input Data and Shape")
+print(data.shape)
+data.head()
+
+#creating data array
+
+c1 = data['V1'].values
+c2 = data['V2'].values
+c3 = data['V3'].values
+c4 = data['V4'].values
+c5 = data['V5'].values
+c6 = data['V6'].values
+c7 = data['V7'].values
+c8 = data['V8'].values
+c9 = data['V9'].values
+c10 = data['V10'].values
+c11= data['V11'].values
+c12= data['V12'].values
+c13= data['V13'].values
+X_data = np.array(list(zip(c1, c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13)))
+
+# Number of clusters
+
+Kmeans = KMeans(n_clusters=2)
+
+# Fitting the input data
+
+Kmeans.fit(X_data)
+
+# Getting the cluster labels
+
+Labels = Kmeans.predict(X_data)
+
+# Centroid values
+
+Centroids = Kmeans.cluster_centers_
+print("Centroid values")
+print(Centroids) 
